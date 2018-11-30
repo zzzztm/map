@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./map.css" />
+</head>
+
+<body>
+    <!-- 地图容器 -->
+    <div id="container"></div>
+
+    <!-- 起点终点设置 -->
+    <div class="setStart">
+        <p>是否设置为起点</p>
+        <span onclick="setStart()">确定</span>
+        <span onclick="cancelStart()">取消</span>
+    </div>
+    <div class="setEnd">
+        <p>是否设置为终点</p>
+        <span onclick="setEnd()">确定</span>
+        <span onclick="cancelEnd()">取消</span>
+    </div>
+    <!-- 寻路结束按钮 -->
+    <div class="cancelSearch" onclick="cancelSearch()">寻路取消</div>
+
+    <!-- 起点终点显示模块 -->
+    <div class="showStartEnd">
+        <!-- 起点部分 -->
+        <div>从
+            <span class="startPlace"></span>
+        </div>
+        <!-- 终点部分 -->
+        <div>到
+            <span class="endPlace">
+            </span>
+        </div>
+        <span class="back">&lt</span>
+        <span class="reverse">调转</span>
+    </div>
+    <!-- 楼层切换按钮 -->
+    <div class="btn_show">P4</div>
+    <div class="floorContainer">
+        <ul class="floorToggleUl"></ul>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script src="./map.min.js"></script>
+    <script src="./map.js"></script>
+</body>
+
+</html>
