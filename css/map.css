@@ -2,12 +2,187 @@
     padding: 0;
     margin: 0;
 }
-
+body::-webkit-scrollbar{
+    display: none;
+}
+/* 地图容器 */
 .container {
     width: 100%;
     height: 200px;
 }
 
+/* 搜索店家模块开始 */
+.search{
+    position: fixed;
+    width: 95%;
+    height: 2.2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    top: .5rem;
+    background-color: #fff;
+    border-radius: .3rem;
+    box-shadow: .1rem .1rem #e2e2e2;
+}
+
+.search input{
+    width: 87%;
+    height: 100%;
+    border: none;
+    outline: none;
+}
+
+.search .icon{
+    display: inline-block;
+    width: 7%;
+}
+
+.search .icon-sousuo{
+    position: absolute;
+    left: .5rem;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.search span{
+    display: none;
+    font-size: 1rem;
+    position: absolute;
+    left: .5rem;
+    top: 50%;
+    transform: translateY(-54%);
+}
+/* 搜索主体部分 */
+.search_part{
+    background-color: #f2f2f2;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    display: none;
+    overflow: scroll;
+}
+
+.search_part::-webkit-scrollbar{
+    display: none;
+}
+
+.main_search{
+    width: 92%;
+    position: absolute;
+    top: 8%;
+    left:50%;
+    transform: translateX(-50%);
+}
+
+
+.main_search .hot_search {
+    width: 100%;
+    height: 100%;
+}
+
+.main_search .hot_search .hot_title {
+    width: 100%;
+    height: 1.3rem;
+    font-size: .7rem;
+}
+
+.main_search .hot_search .hot_contant {
+    margin: .3rem 0;
+    height: 1rem;
+    width: 100%;
+}
+
+.main_search .hot_search .hot_contant span {
+    width: auto;
+    margin-right: .4rem;
+    height: 1.5rem;
+    border: 1px solid #e6e6e6;
+    border-radius: .06rem;
+    float: left;
+    font-size: .9rem;
+    text-align: center;
+    line-height: 1.5rem;
+    color: #858585;
+}
+
+.his_search .his_title {
+    width: 100%;
+    height: .3rem;
+    font-size: .7rem;
+    margin-top: 1rem;
+
+}
+
+.his_search .his_title .his_left {
+    float: left;
+    font-size: .7rem;
+    height: 100%;
+}
+
+.his_search .his_title .his_right {
+    float: right;
+    height: 100%;
+}
+
+.his_search .his_list li {
+    list-style: none;
+    font-size: .8rem;
+    height: 1rem;
+    margin: 1.2rem 0 0 0;
+    border: 1px solid #e6e6e6;
+    line-height: 1rem;
+    color: #858585;
+}
+/* 搜索店家模块结束 */
+
+/* 模糊搜索部分开始 */
+.fuzzy_search{
+    background-color: #f2f2f2;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    height: 100%;
+    display: none;
+    overflow: scroll;
+}
+
+.fuzzy_search::-webkit-scrollbar{
+    display: none;
+}
+
+.fuzzy_search .no_result{
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.fuzzy_search ul{
+    width: 92%;
+    margin: 3.5rem auto;
+    list-style: none;
+    height: auto;
+}
+
+.fuzzy_search ul .search_result p:nth-child(1){
+    font-size: .8rem;
+    color: #666666;
+    padding-bottom: .5rem;
+}
+.fuzzy_search ul .search_result p:nth-child(2){
+    font-size: .7rem;
+    color: #AAAAAA;
+    padding-bottom: .5rem;
+}
+/* 模糊搜索部分结束 */
+
+/* 楼层切换模块开始 */
 .floorContainer{
     position: absolute;
     list-style-type: none;
@@ -48,7 +223,6 @@
     -o-transition: height 0.5s ,overflow 0.5s; /* Opera */
 }
 
-
 .btn {
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -87,19 +261,21 @@
     bottom: 2rem;
 }
 
-
 .btn_active{
     background-color: #e1e87d;
 }
+/* 楼层切换模块结束 */
 
+/* 设置起点模块开始 */
 .setStart{
     position: absolute;
     width: 16rem;
     height: 8rem;
     background-color: rgba(255, 255, 255,.7);
     z-index: 5;
-    left:3.5rem;
-    bottom: 18rem;
+    left:50%;
+    bottom: 50%;
+    transform:translate(-50%,-50%);
     border-radius: 1rem;
     display: none;
 }
@@ -122,15 +298,18 @@
     cursor: pointer;
     border-radius: .5rem;
 }
+/* 设置起点模块结束 */
 
+/* 设置终点模块开始 */
 .setEnd{
     position: absolute;
     width: 16rem;
     height: 8rem;
     background-color: rgba(255, 255, 255,.7);
     z-index: 2;
-    left:3.5rem;
-    bottom: 18rem;
+    left:50%;
+    bottom: 50%;
+    transform:translate(-50%,-50%);
     display: none;
 }
 
@@ -152,7 +331,9 @@
     cursor: pointer;
     border-radius: .5rem;
 }
+/* 设置终点模块结束 */
 
+/* 取消寻路模块 */
 .cancelSearch{
     z-index: 2;
     width: 4rem;
@@ -169,6 +350,7 @@
     display: none;
 }
 
+/* 显示起点终点模块开始 */
 .showStartEnd{
     width: 100%;
     height: 4.8rem;
@@ -191,6 +373,8 @@
     vertical-align: middle;
     text-align: center;
 }
+
+/* 显示起点终点模块后退功能 */
 .back{
    position: absolute;
    left: .5rem;
@@ -199,6 +383,7 @@
    cursor: pointer;
 }
 
+/* 显示起点终点模块调转功能 */
 .reverse{
     position: absolute;
     right: 1rem;
@@ -206,3 +391,6 @@
     font-size: 1.2rem;
     cursor: pointer;
 }
+/* 显示起点终点模块结束 */
+
+

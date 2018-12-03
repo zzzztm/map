@@ -6,12 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Document</title>
-    <link rel="stylesheet" href="./map.css" />
+    <link rel="stylesheet" href="./css/map.css" />
+    <link rel="stylesheet" href="./css/iconfont.css">
 </head>
 
 <body>
     <!-- 地图容器 -->
     <div id="container"></div>
+
+    <!-- 搜索店家模块 -->
+    <div class="search">
+        <div class="icon">
+            <i class="iconfont icon-sousuo"></i>
+            <span>&lt</span>
+        </div>
+        <input type="text" placeholder="输入商户关键字搜索">
+    </div>
+    <div class="search_part">
+        <div class="main_search">
+            <div class="hot_search">
+                <div class="hot_title">
+                    热门搜索
+                </div>
+                <div class="hot_contant">
+                    <span class="spanSearch">Hermès 爱马仕</span>
+                    <span class="spanSearch">Adidas</span>
+                </div>
+            </div>
+            <div class="his_search">
+                <div class="his_title">
+                    <span class="his_left">历史记录</span>
+                    <span class="his_right" onclick="clearHistory()">清空历史记录</span>
+                </div>
+                <div class="his_list">
+                    <ul>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 模糊搜索部分 -->
+    <div class="fuzzy_search">
+        <div class="no_result">
+            <p>抱歉，没有您搜索的结果!</p>
+        </div>
+        <ul>
+        </ul>
+    </div>
 
     <!-- 起点终点设置 -->
     <div class="setStart">
@@ -47,9 +89,9 @@
         <ul class="floorToggleUl"></ul>
     </div>
 
-    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-    <script src="./map.min.js"></script>
-    <script src="./map.js"></script>
+    <script src="./js/jquery.js"></script>
+    <script src="./js/map.min.js"></script>
+    <script src="./js/map.js"></script>
 </body>
 
 </html>
