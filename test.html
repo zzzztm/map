@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +11,23 @@
             background-color: aqua;
         }
     </style>
-    <script src="./jquery.js"></script>
+    <script src="./js/jquery.js"></script>
     <script>
-        $(function(){
-            $("li").on("click",function(){
+        $(function () {
+            $("li").on("click", function () {
                 $(this).addClass("color").siblings().removeClass("color");
+
             })
-            
+            let test = "abcd",
+                val = $(".input").val();
+            $(".input").on("keyup", function () {
+                console.log(val);
+                console.log(test.indexOf(val));
+            })
         })
     </script>
 </head>
+
 <body>
     <li></li>
     <li></li>
@@ -28,5 +36,7 @@
     <li></li>
     <li></li>
     <li></li>
+    <input type="text" class="input">
 </body>
+
 </html>
