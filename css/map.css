@@ -2,9 +2,11 @@
     padding: 0;
     margin: 0;
 }
-body::-webkit-scrollbar{
+
+body::-webkit-scrollbar {
     display: none;
 }
+
 /* 地图容器 */
 .container {
     width: 100%;
@@ -12,7 +14,7 @@ body::-webkit-scrollbar{
 }
 
 /* 搜索店家模块开始 */
-.search{
+.search {
     position: fixed;
     width: 95%;
     height: 2.2rem;
@@ -25,26 +27,26 @@ body::-webkit-scrollbar{
     box-shadow: .1rem .1rem #e2e2e2;
 }
 
-.search input{
+.search input {
     width: 87%;
     height: 100%;
     border: none;
     outline: none;
 }
 
-.search .icon{
+.search .icon {
     display: inline-block;
     width: 7%;
 }
 
-.search .icon-sousuo{
+.search .icon-sousuo {
     position: absolute;
     left: .5rem;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.search span{
+.search span {
     display: none;
     font-size: 1rem;
     position: absolute;
@@ -52,8 +54,9 @@ body::-webkit-scrollbar{
     top: 50%;
     transform: translateY(-54%);
 }
+
 /* 搜索主体部分 */
-.search_part{
+.search_part {
     background-color: #f2f2f2;
     position: fixed;
     width: 100%;
@@ -65,15 +68,15 @@ body::-webkit-scrollbar{
     overflow: scroll;
 }
 
-.search_part::-webkit-scrollbar{
+.search_part::-webkit-scrollbar {
     display: none;
 }
 
-.main_search{
+.main_search {
     width: 92%;
     position: absolute;
     top: 8%;
-    left:50%;
+    left: 50%;
     transform: translateX(-50%);
 }
 
@@ -127,19 +130,30 @@ body::-webkit-scrollbar{
     height: 100%;
 }
 
-.his_search .his_list li {
+.his_search .his_list ul li {
     list-style: none;
     font-size: .8rem;
     height: 1rem;
-    margin: 1.2rem 0 0 0;
+    margin: .5rem 0 0 0;
     border: 1px solid #e6e6e6;
     line-height: 1rem;
     color: #858585;
 }
+
+.his_search .his_list ul li:nth-child(1) {
+    list-style: none;
+    font-size: .8rem;
+    height: 1rem;
+    margin: 1rem 0 0 0;
+    border: 1px solid #e6e6e6;
+    line-height: 1rem;
+    color: #858585;
+}
+
 /* 搜索店家模块结束 */
 
 /* 模糊搜索部分开始 */
-.fuzzy_search{
+.fuzzy_search {
     background-color: #f2f2f2;
     position: fixed;
     width: 100%;
@@ -151,39 +165,41 @@ body::-webkit-scrollbar{
     overflow: scroll;
 }
 
-.fuzzy_search::-webkit-scrollbar{
+.fuzzy_search::-webkit-scrollbar {
     display: none;
 }
 
-.fuzzy_search .no_result{
+.fuzzy_search .no_result {
     display: none;
     position: absolute;
     left: 50%;
     top: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%, -50%);
 }
 
-.fuzzy_search ul{
+.fuzzy_search ul {
     width: 92%;
     margin: 3.5rem auto;
     list-style: none;
     height: auto;
 }
 
-.fuzzy_search ul .search_result p:nth-child(1){
+.fuzzy_search ul .search_result p:nth-child(1) {
     font-size: .8rem;
     color: #666666;
     padding-bottom: .5rem;
 }
-.fuzzy_search ul .search_result p:nth-child(2){
+
+.fuzzy_search ul .search_result p:nth-child(2) {
     font-size: .7rem;
     color: #AAAAAA;
     padding-bottom: .5rem;
 }
+
 /* 模糊搜索部分结束 */
 
 /* 楼层切换模块开始 */
-.floorContainer{
+.floorContainer {
     position: absolute;
     list-style-type: none;
     width: 3rem;
@@ -195,32 +211,38 @@ body::-webkit-scrollbar{
 
 }
 
-.floorContainer::-webkit-scrollbar{
+.floorContainer::-webkit-scrollbar {
     display: none;
 }
 
-.floorToggleUl{
+.floorToggleUl {
     position: absolute;
     width: 3rem;
     height: 46rem;
 }
 
-.floorToggleUl_open{
+.floorToggleUl_open {
     height: 17.5rem;
     overflow: scroll;
     transition: height 0.5s;
-    -moz-transition: height 0.5s; /* Firefox 4 */
-    -webkit-transition: height 0.5s; /* Safari 和 Chrome */
-    -o-transition: height 0.5s; /* Opera */
-}  
+    -moz-transition: height 0.5s;
+    /* Firefox 4 */
+    -webkit-transition: height 0.5s;
+    /* Safari 和 Chrome */
+    -o-transition: height 0.5s;
+    /* Opera */
+}
 
-.floorToggleUl_close{
+.floorToggleUl_close {
     height: 3.5rem;
     overflow: hidden;
-    transition: height 0.5s ,overflow 0.5s;
-    -moz-transition: height 0.5s ,overflow 0.5s; /* Firefox 4 */
-    -webkit-transition: height 0.5s ,overflow 0.5s; /* Safari 和 Chrome */
-    -o-transition: height 0.5s ,overflow 0.5s; /* Opera */
+    transition: height 0.5s, overflow 0.5s;
+    -moz-transition: height 0.5s, overflow 0.5s;
+    /* Firefox 4 */
+    -webkit-transition: height 0.5s, overflow 0.5s;
+    /* Safari 和 Chrome */
+    -o-transition: height 0.5s, overflow 0.5s;
+    /* Opera */
 }
 
 .btn {
@@ -240,7 +262,7 @@ body::-webkit-scrollbar{
     cursor: pointer;
 }
 
-.btn_show{
+.btn_show {
     position: absolute;
     margin-top: .5rem;
     margin-bottom: .5rem;
@@ -261,80 +283,84 @@ body::-webkit-scrollbar{
     bottom: 2rem;
 }
 
-.btn_active{
-    background-color: #e1e87d;
+.btn_active {
+    background-color: #858585;
+    color: #f2f2f2;
 }
+
 /* 楼层切换模块结束 */
 
 /* 设置起点模块开始 */
-.setStart{
+.setStart {
     position: absolute;
     width: 16rem;
     height: 8rem;
-    background-color: rgba(255, 255, 255,.7);
+    background-color: rgba(255, 255, 255, .7);
     z-index: 5;
-    left:50%;
+    left: 50%;
     bottom: 50%;
-    transform:translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     border-radius: 1rem;
     display: none;
 }
 
-.setStart p{
+.setStart p {
     width: 100%;
     height: 3rem;
     text-align: center;
     margin-top: 2rem;
 }
 
-.setStart span{
+.setStart span {
     display: inline-block;
     width: 4rem;
     height: 2.5rem;
-    margin-left:2.6rem;
+    margin-left: 2.6rem;
     line-height: 2.5rem;
     text-align: center;
-    background-color: rgba(200,200,200,.7);
+    background-color: rgba(200, 200, 200, .7);
     cursor: pointer;
     border-radius: .5rem;
 }
+
 /* 设置起点模块结束 */
 
 /* 设置终点模块开始 */
-.setEnd{
+.setEnd {
     position: absolute;
     width: 16rem;
     height: 8rem;
-    background-color: rgba(255, 255, 255,.7);
+    background-color: rgba(255, 255, 255, .7);
     z-index: 2;
-    left:50%;
+    left: 50%;
     bottom: 50%;
-    transform:translate(-50%,-50%);
+    transform: translate(-50%, -50%);
     display: none;
 }
 
-.setEnd p{
+.setEnd p {
     width: 100%;
     height: 3rem;
     text-align: center;
     margin-top: 2rem;
 }
 
-.setEnd span{
+.setEnd span {
     display: inline-block;
     width: 4rem;
     height: 2.5rem;
-    margin-left:2.6rem;
+    margin-left: 2.6rem;
     line-height: 2.5rem;
     text-align: center;
-    background-color: rgba(200,200,200,.7);
+    background-color: rgba(200, 200, 200, .7);
     cursor: pointer;
     border-radius: .5rem;
 }
+
 /* 设置终点模块结束 */
 
 /* 取消寻路模块 */
-.cancelSearch{
+.cancelSearch {
     z-index: 2;
     width: 4rem;
     height: 2.5rem;
@@ -351,21 +377,22 @@ body::-webkit-scrollbar{
 }
 
 /* 显示起点终点模块开始 */
-.showStartEnd{
+.showStartEnd {
     width: 100%;
     height: 4.8rem;
-    background-color:rgba(255, 255,255,.9);
+    background-color: rgba(255, 255, 255, .9);
     position: fixed;
     top: 0;
     display: none;
 }
-.showStartEnd div{
+
+.showStartEnd div {
     width: 80%;
     height: 2rem;
     margin: .5rem auto;
 }
 
-.showStartEnd div span{
+.showStartEnd div span {
     display: inline-block;
     width: 80%;
     height: 1.5rem;
@@ -375,26 +402,27 @@ body::-webkit-scrollbar{
 }
 
 /* 显示起点终点模块后退功能 */
-.back{
-   position: absolute;
-   left: .5rem;
-   top: .4rem;
-   font-size: 1.2rem;
-   cursor: pointer;
+.back {
+    position: absolute;
+    left: .5rem;
+    top: .4rem;
+    font-size: 1.2rem;
+    cursor: pointer;
 }
 
 /* 显示起点终点模块调转功能 */
-.reverse{
+.reverse {
     position: absolute;
     right: 1rem;
     top: 1.6rem;
     font-size: 1.2rem;
     cursor: pointer;
 }
+
 /* 显示起点终点模块结束 */
 
 /* 3D切换开始 */
-.map_three{
+.map_three {
     display: inline-block;
     position: absolute;
     z-index: 20;
@@ -413,7 +441,7 @@ body::-webkit-scrollbar{
 /* 3D切换结束 */
 
 /* 放大缩小地图模块开始 */
-.biger{
+.biger {
     display: inline-block;
     position: absolute;
     z-index: 20;
@@ -429,7 +457,7 @@ body::-webkit-scrollbar{
     cursor: pointer;
 }
 
-.smaller{
+.smaller {
     display: inline-block;
     position: absolute;
     z-index: 20;
@@ -444,6 +472,5 @@ body::-webkit-scrollbar{
     bottom: 3%;
     cursor: pointer;
 }
+
 /* 放大缩小地图模块结束 */
-
-

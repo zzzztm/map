@@ -14,16 +14,26 @@
     <script src="./js/jquery.js"></script>
     <script>
         $(function () {
-            $("li").on("click", function () {
-                $(this).addClass("color").siblings().removeClass("color");
+            // $("li").on("click", function () {
+            //     $(this).addClass("color").siblings().removeClass("color");
 
-            })
-            let test = "abcd",
-                val = $(".input").val();
-            $(".input").on("keyup", function () {
-                console.log(val);
-                console.log(test.indexOf(val));
-            })
+            // })
+            // let test = "abcd",
+            //     val = $(".input").val();
+            // $(".input").on("keyup", function () {
+            //     console.log(val);
+            //     console.log(test.indexOf(val));
+            // })
+            function mul(x){
+                return function (y){
+                    return function (z){
+                        return x*y*z;
+                    }
+                }
+            }
+            console.log(mul(2)(3)(4)); // output : 24 
+            arr=[1,2];
+            console.log(Array.prototype)
         })
     </script>
 </head>
