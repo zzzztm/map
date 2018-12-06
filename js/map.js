@@ -1,4 +1,4 @@
-$(function () {
+$(function() {
     let container = document.getElementById("container"),
         map,
         flag = 0,
@@ -8,23 +8,28 @@ $(function () {
         endPID = "",
         startPlace = "",
         endPlace = "",
-        testSearch = [{
-            "name": "L360",
-            "bindShopId": "3BCE77DD-CEA8-4687-B9FD-3BAC1D4F81D4",
-            "floor": "L3"
-        }, {
-            "name": "L255",
-            "bindShopId": "F35E8698-1FF2-4DBF-908B-BDA11B31ACC9",
-            "floor": "L2"
-        }, {
-            "name": "阿迪达斯",
-            "bindShopId": "2D923119-AE74-48AA-AE33-34CA22577C7F",
-            "floor": "L2"
-        }, {
-            "name": "阿迪王",
-            "bindShopId": "B6C91844-BF8D-4B10-BEED-1DDB30906CCB",
-            "floor": "L3"
-        }];
+        testSearch = [
+            {
+                name: "L360",
+                bindShopId: "3BCE77DD-CEA8-4687-B9FD-3BAC1D4F81D4",
+                floor: "L3"
+            },
+            {
+                name: "L255",
+                bindShopId: "F35E8698-1FF2-4DBF-908B-BDA11B31ACC9",
+                floor: "L2"
+            },
+            {
+                name: "阿迪达斯",
+                bindShopId: "2D923119-AE74-48AA-AE33-34CA22577C7F",
+                floor: "L2"
+            },
+            {
+                name: "阿迪王",
+                bindShopId: "B6C91844-BF8D-4B10-BEED-1DDB30906CCB",
+                floor: "L3"
+            }
+        ];
 
     GIM.REMOTE_SERVER =
         "https://ifs.cloudindoormap.com/webAPI/ClientService.asmx/Command?callback&";
@@ -77,8 +82,8 @@ $(function () {
         // 遍历动态渲染li
         data.forEach(element => {
             $(".floorContainer .floorToggleUl").append(
-                `<li class="btn" data="${element.floorID}" value="${
-                element.Name
+                `<li class="btn" data="${element.FloorID}" value="${
+                    element.Name
                 }" id="${element.Name}">${element.Name}</li>`
             );
         });
@@ -91,14 +96,21 @@ $(function () {
 
         // btn_show点击事件
 
-        $(".btn_show").on("click", function () {});
+        $(".btn_show").on("click", () => {
+            $(".btn_show").hide();
+            $(".floorContainer").show(0,() => {
+                $(".floorContainer").removeClass("floorToggleUl_close");
+                $(".floorContainer").addClass("floorToggleUl_open");
+            });
+        });
 
         // btn点击事件
-        $(".floorToggleUl .btn").on("click", function () {
+        $(".floorToggleUl .btn").on("click", function() {
             // 点击实现切换折叠按钮
             if (flag == 0) {
                 $(".floorContainer").removeClass("floorToggleUl_close");
                 $(".floorContainer").addClass("floorToggleUl_open");
+
                 flag = 1;
             } else {
                 $(".floorContainer").removeClass("floorToggleUl_open");
@@ -125,6 +137,15 @@ $(function () {
                 flag = 0;
             }
         });
+
+        // floorContainer过渡效果之后执行回调
+        $(".floorContainer").on("webkitTransitionEnd transitionend", () => {
+            if (flag == 0) {
+                console.log("缩回了");
+                $(".btn_show").show();
+                $(".floorContainer").hide();
+            }
+        });
     }
 
     // 当前区块点击触发事件回调函数
@@ -135,10 +156,8 @@ $(function () {
         $(".search .icon-sousuo").hide();
         $(".search span").show();
 
-
         // 自动寻路模块
         if (click == 1) {
-
             // 每次点击之前初始化
             $(".startPlace").html("");
             $(".endPlace").html("");
@@ -148,7 +167,7 @@ $(function () {
             $(".setStart").show(300);
 
             // 设置起点函数
-            setStart = function () {
+            setStart = function() {
                 // 设置起点nodeId
                 startPID = e.nodeId;
                 map.startPID = e.nodeId;
@@ -169,17 +188,15 @@ $(function () {
             click++;
         } else {
             if (p == 2) {
-
                 $(".setEnd").show(300);
                 // 设置终点函数
-                setEnd = function () {
+                setEnd = function() {
                     // 设置终点nodeId
                     endPID = e.nodeId;
                     map.endPID = e.nodeId;
                     $(".setEnd").hide(300);
                     // 判断起点终点是否一致，一致提醒错误
                     if (startPID & endPID) {
-
                         if (startPID == endPID) {
                             alert("起点终点相同，请重新设置");
                         }
@@ -188,8 +205,7 @@ $(function () {
                         $(".endPlace").html(endPlace);
 
                         // 寻路事件
-                        map.searchPath(function (msg) {
-
+                        map.searchPath(function(msg) {
                             if (msg.type == "done") {
                                 // 地图缩放比
                                 map.zoomLevel(12);
@@ -212,7 +228,7 @@ $(function () {
         }
     }
     // 起点终点调转事件
-    $(".reverse").on("click", function () {
+    $(".reverse").on("click", function() {
         [map.endPID, map.startPID] = [map.startPID, map.endPID];
         [endPlace, startPlace] = [startPlace, endPlace];
         $(".startPlace").html(endPlace);
@@ -220,8 +236,7 @@ $(function () {
     });
 
     // 寻路取消按钮
-    cancelSearch = function () {
-
+    cancelSearch = function() {
         map.clearPath(true);
         map.zoomLevel(20);
         map.setPolarAngle(0);
@@ -238,21 +253,20 @@ $(function () {
     };
 
     // 起点取消按钮事件
-    cancelStart = function () {
+    cancelStart = function() {
         $(".setStart").hide(300);
         cancelSearch();
         click--;
-
     };
 
     // 终点取消按钮事件
-    cancelEnd = function () {
+    cancelEnd = function() {
         $(".setEnd").hide(300);
         click++;
     };
 
     //  起点终点显示模块back事件
-    $(".back").on("click", function () {
+    $(".back").on("click", function() {
         cancelSearch();
         // 商家搜索显示
         $(".search").show();
@@ -267,24 +281,27 @@ $(function () {
     });
 
     // 商家搜索模块
-    $(".search input").on("focus", function () {
+    $(".search input").on("focus", function() {
         $(".search_part").show();
         $(".search .icon span").show();
         $(".search .icon-sousuo").hide();
-    })
-    $(".search .icon span").on("click", function () {
+    });
+    $(".search .icon span").on("click", function() {
         $(".search_part").hide();
         $(".search .icon-sousuo").show();
         $(".search .icon span").hide();
         $(".fuzzy_search").hide();
         $(".search input").val("");
-    })
+    });
 
     // 模糊搜索功能
-    $(".search input").on("keyup", function () {
+    $(".search input").on("keyup", function() {
         // 每次匹配字符串的时候初始化
         $(".fuzzy_search ul").html("");
-        let searchText = $(".search input").val().trim().toLocaleLowerCase(),
+        let searchText = $(".search input")
+                .val()
+                .trim()
+                .toLocaleLowerCase(),
             len = 0;
         $(".search_part").hide();
         $(".fuzzy_search").show();
@@ -292,11 +309,16 @@ $(function () {
         // 遍历模糊搜索
         testSearch.forEach(element => {
             var shopName = element.name.toLocaleLowerCase();
-            if (shopName.indexOf(searchText) != -1 & searchText.length != 0) {
+            if (
+                (shopName.indexOf(searchText) != -1) &
+                (searchText.length != 0)
+            ) {
                 $(".fuzzy_search .no_result").hide();
                 $(".fuzzy_search ul").show();
                 $(".fuzzy_search ul").append(`
-                <li class="search_point" onclick="setPoint('${element.bindShopId}','${element.name}','${element.floor}')">
+                <li class="search_point" onclick="setPoint('${
+                    element.bindShopId
+                }','${element.name}','${element.floor}')">
                 <div class="search_result">
                     <p>${element.name}</p>
                     <p>楼层${element.floor}</p>
@@ -309,17 +331,19 @@ $(function () {
         });
         // 当len等于0则证明没有找到相关数据 此时显示no_result页
         if (len == 0) {
-            console.log("没找到")
+            console.log("没找到");
             $(".fuzzy_search ul").hide();
             $(".fuzzy_search .no_result").show();
         }
-    })
+    });
 
     //点击历史搜索结果列表跳转至搜索结果页
-    hisLiBtn = function (li, bindShopId, floor) {
+    hisLiBtn = function(li, bindShopId, floor) {
         $(".fuzzy_search ul").html("");
         $(".fuzzy_search").show();
-        let name = $(li).html().toLowerCase();
+        let name = $(li)
+            .html()
+            .toLowerCase();
         console.log(bindShopId);
         $(".fuzzy_search ul").append(`
         <li class="search_point" onclick="setPoint('${bindShopId}','${name}','${floor}')">
@@ -328,11 +352,11 @@ $(function () {
             <p>楼层${floor}</p>
         </div>
         </li>
-        `)
-    }
+        `);
+    };
 
     // 根据店铺ID跳转到相应店铺
-    setPoint = function (bindShopId, shopName, floor) {
+    setPoint = function(bindShopId, shopName, floor) {
         $(".search_part").hide();
         $(".fuzzy_search").hide();
         $(".search input").val(shopName);
@@ -341,7 +365,9 @@ $(function () {
         map.zoomLevel(12);
         // 设置地图仰角
         map.setPolarAngle(40);
-        var shopName_show = $(".his_list ul li").text().toLocaleUpperCase(),
+        var shopName_show = $(".his_list ul li")
+                .text()
+                .toLocaleUpperCase(),
             shopName = shopName.toLocaleUpperCase(),
             h = `
             <li onclick="hisLiBtn(this,'${bindShopId}','${floor}')">${shopName}</li>
@@ -349,54 +375,58 @@ $(function () {
         shopName = shopName.toLocaleUpperCase();
         // 判断是否存在该历史搜索项，如果存在则不再渲染内容，如果不存在新搜索的内容追加到后搜索的内容之前
         if (shopName_show != shopName) {
-            $('.his_list ul li').length > 0 ? $('.his_list ul').children('li').eq(0).before(h) : $('.his_list ul').append(h);
+            $(".his_list ul li").length > 0
+                ? $(".his_list ul")
+                      .children("li")
+                      .eq(0)
+                      .before(h)
+                : $(".his_list ul").append(h);
         } else {
-            return
+            return;
         }
-    }
+    };
 
     // 清空历史记录
-    clearHistory = function () {
+    clearHistory = function() {
         $(".his_list ul").html("");
-    }
+    };
 
     // 3d切换
-    mapToggle = function () {
-        let value = $('.map_three').text();
-        if (value == '3D') {
-            map.setPolarAngle(60)
-            $('.map_three').text('2D');
+    mapToggle = function() {
+        let value = $(".map_three").text();
+        if (value == "3D") {
+            map.setPolarAngle(60);
+            $(".map_three").text("2D");
         } else {
-            map.setPolarAngle(0)
-            $('.map_three').text('3D');
+            map.setPolarAngle(0);
+            $(".map_three").text("3D");
         }
-    }
+    };
 
     // 放大地图
-    biger = function () {
+    biger = function() {
         if (map.cameraRadius - 1000 < map.minCameraRadius) {
             map.cameraRadius = 1000;
         } else {
             map.cameraRadius = map.cameraRadius - 1000;
         }
-    }
+    };
 
     // 缩小地图
-    smaller = function () {
+    smaller = function() {
         if (map.cameraRadius < map.maxCameraRadius) {
-            if ((map.cameraRadius + 1000) > map.maxCameraRadius) {
+            if (map.cameraRadius + 1000 > map.maxCameraRadius) {
                 map.cameraRadius = 8000;
             } else {
                 map.cameraRadius = map.cameraRadius + 1000;
             }
         }
-    }
+    };
 
-    map.regNavigationComplete(function () {
+    map.regNavigationComplete(function() {
         /**
          * 模拟导航结束之后初始化地图旋转角度
          */
         map.setAzimuthalAngle(45);
-    })
-
+    });
 });

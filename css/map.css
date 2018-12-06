@@ -272,8 +272,8 @@ body::-webkit-scrollbar {
     line-height: 3rem;
     width: 3rem;
     height: 3rem;
-    color: #858585;
-    background-color: #e1e87d;
+    background-color: #858585;
+    color: #f2f2f2;
     background-size: contain;
     border-radius: .5rem;
     cursor: pointer;
