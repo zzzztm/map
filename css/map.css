@@ -48,11 +48,14 @@ body::-webkit-scrollbar {
 
 .search span {
     display: none;
+    width: 5%;
+    height: 1.5rem;
     font-size: 1rem;
     position: absolute;
     left: .5rem;
     top: 50%;
     transform: translateY(-54%);
+    line-height: 1.5rem;
 }
 
 /* 搜索主体部分 */
@@ -221,7 +224,7 @@ body::-webkit-scrollbar {
     height: 46rem;
 }
 
-.floorToggleUl_open {
+ .floorToggleUl_open {
     height: 17.5rem;
     overflow: scroll;
     transition: height 0.5s;
@@ -231,9 +234,9 @@ body::-webkit-scrollbar {
     /* Safari 和 Chrome */
     -o-transition: height 0.5s;
     /* Opera */
-}
+ }
 
-.floorToggleUl_close {
+ .floorToggleUl_close {
     height: 3.5rem;
     overflow: hidden;
     transition: height 0.5s, overflow 0.5s;
